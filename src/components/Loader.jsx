@@ -8,7 +8,7 @@ const bounceTransition = {
     },
 };
 
-export default function Loader({ text = "Loading..." }) {
+export default function CustomLoading({ text = "Loading..." }) {
     return (
         <div className="flex flex-col items-center justify-center h-full space-y-4 bg-zinc-800 rounded-lg p-4">
             <div className="flex space-x-2">

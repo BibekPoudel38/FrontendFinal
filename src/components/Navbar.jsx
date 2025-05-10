@@ -76,11 +76,10 @@ function Navbar() {
             <div className="relative" ref={menuRef}>
                 <button
                     onClick={() => setMenuOpen(!menuOpen)}
-                    className="w-10 h-10 rounded-full bg-purple-600 flex items-center justify-center text-xl font-bold hover:bg-purple-500 transition  cursor-pointer"
+                    className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-xl font-bold hover:bg-purple-500 transition  cursor-pointer"
                 >
-                    P
+                    ⚙️
                 </button>
-
                 {menuOpen && (
                     <div className="absolute right-0 mt-2 w-48 bg-zinc-800 rounded-lg shadow-lg py-2 z-50 text-gray-200">
                         <Link

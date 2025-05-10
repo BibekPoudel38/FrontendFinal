@@ -33,7 +33,7 @@ export default function Home() {
             {/* Header */}
             <header className="fixed w-full bg-opacity-20 backdrop-blur-md z-50">
                 <div className="flex justify-between items-center p-6 max-w-7xl mx-auto">
-                    <div className="text-2xl font-bold tracking-wider">StudentConnect</div>
+                    <div className="text-2xl font-bold tracking-wider">Toro Portal</div>
                     <nav className="space-x-6 hidden md:flex">
                         <a href="#threads" className="hover:text-purple-400">Threads</a>
                         <a href="#mentorship" className="hover:text-purple-400">Mentorship</a>

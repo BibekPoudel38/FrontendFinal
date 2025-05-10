@@ -91,12 +91,24 @@ export default function ProfilePage() {
                 </div>
                 {/* Mentor Profile */}
                 <div className="bg-zinc-800 p-6 rounded-lg shadow mb-2">
-                    <h2 className="text-2xl font-bold mb-4">Mentor's Profile</h2>
-                    <p><strong>Major:</strong> {user.profile.email}</p>
-                    <p><strong>Current Academic Stage:</strong> @{user.profile.email.toString().split("@")[0]}</p>
-                    <p><strong>Joined:</strong> {new Date(user.profile.created_at).toLocaleDateString()}</p>
+                    <h2 className="text-2xl font-bold mb-4 text-purple-700">Mentor's Profile</h2>
+
+                    <div className="space-y-3 text-gray-800 dark:text-white">
+                        <p><strong>Name:</strong> {user.mentor.full_name}</p>
+                        <p><strong>Bio:</strong> {user.mentor.bio}</p>
+                        <p><strong>Expertise:</strong> {user.mentor.expertise}</p>
+                        <p><strong>Services Offered:</strong> {user.mentor.services_offered}</p>
+                        <p><strong>Education:</strong> {user.mentor.education}</p>
+                        <p><strong>Experience:</strong> {user.mentor.experience_years} years</p>
+                        <p><strong>Mentorship Mode:</strong> {user.mentor.mode_of_mentorship}</p>
+                        <p><strong>Verified:</strong> {user.mentor.verified ? "✅ Yes" : "❌ No"}</p>
+                        <p><strong>Joined:</strong> {new Date(user.mentor.created_at).toLocaleDateString()}</p>
+                        {user.mentor.resume && (
+                            <p><strong>Resume:</strong> <a href={user.mentor.resume} className="text-blue-600 hover:underline" target="_blank" rel="noreferrer">View Resume</a></p>
+                        )}
+                    </div>
                 </div>
-                {/* Change Password */}
+                {/* Change Password
                 <div className="bg-zinc-800 p-6 rounded-lg shadow mb-2">
                     <h2 className="text-2xl font-bold mb-4">Change Password</h2>
                     <form onSubmit={handlePasswordChange} className="grid gap-4">
@@ -129,7 +141,7 @@ export default function ProfilePage() {
                         </button>
                     </form>
                 </div>
-                <div className="bg-zinc-800 p-6 rounded-lg shadow mb-2">
+                {/* <div className="bg-zinc-800 p-6 rounded-lg shadow mb-2">
                     <h2 className="text-2xl font-bold mb-4">Register as Mentor</h2>
                     <form onSubmit={handlePasswordChange} className="grid gap-4">
                         <input
@@ -160,7 +172,7 @@ export default function ProfilePage() {
                             Update Password
                         </button>
                     </form>
-                </div>
+                </div> */}
 
                 {/* My Threads */}
                 <div className="bg-zinc-800 p-6 rounded-lg shadow mb-8">

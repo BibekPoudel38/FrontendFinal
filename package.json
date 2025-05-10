@@ -34,6 +34,7 @@
     "heroicons": "^2.2.0",
     "javascript-time-ago": "^2.5.11",
     "moment": "^2.30.1",
+    "moment-timezone": "^0.5.48",
     "react": "^19.1.0",
     "react-big-calendar": "^1.18.0",
     "react-calendar": "^5.1.0",

@@ -1,9 +1,7 @@
-import { ArrowUpRightIcon, HeartIcon, SparklesIcon } from "@heroicons/react/24/outline";
-import { AnimatePresence, motion } from "framer-motion";
+import { ArrowUpRightIcon, HeartIcon } from "@heroicons/react/24/outline";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import api from "../api/apiClients";
-import { ai_endpoint } from "../api/endpoints";
 import BackButton from "../components/BackButton";
 import ThreadPreviewer from "../components/ThreadPreviewer";
 
@@ -30,18 +28,6 @@ export default function JobDetails() {
         fetchJobDetails();
     }, [jobId]);
 
-    const handleAIAnalyze = async () => {
-        setAiPanelOpen(true);
-        setFetchingAI(true);
-        try {
-            const response = await api.post(ai_endpoint + "/analyze-job", { job_id: jobId });
-            setAiResponse(response.data.answer);
-        } catch (err) {
-            setAiResponse(err.message);
-        }
-        setFetchingAI(false);
-    };
-
     if (loading) {
         return <div className="text-center py-12 text-lg text-gray-300">Loading job details...</div>;
     }
@@ -57,7 +43,7 @@ export default function JobDetails() {
             <div className="max-w-5xl mx-auto bg-zinc-800 rounded-xl overflow-hidden shadow-lg">
                 <div className="p-6 border-b border-zinc-700">
                     <BackButton />
-                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center mt-4">
+                    <div className="flex flex-row md:flex-row justify-between items-start md:items-center mt-4">
                         <div className="space-y-1">
                             <h1 className="text-3xl font-bold">{job.title}</h1>
                             <p className="text-gray-400">{job.company_name} • {job.location}</p>
@@ -80,13 +66,6 @@ export default function JobDetails() {
                             <button className="flex items-center justify-center gap-2 px-6 py-2 border border-gray-500 text-gray-300 rounded-lg hover:bg-zinc-700 transition">
                                 <HeartIcon className="h-5 w-5" />
                                 Save Job
-                            </button>
-                            <button
-                                onClick={handleAIAnalyze}
-                                className="flex items-center justify-center gap-2 px-6 py-2 border border-purple-500 text-purple-300 rounded-lg hover:bg-purple-600 hover:text-white transition"
-                            >
-                                <SparklesIcon className="h-5 w-5" />
-                                Analyze with AI
                             </button>
                         </div>
                     </div>
@@ -150,31 +129,6 @@ export default function JobDetails() {
                     ))}
                 </div>
             </div>
-
-            {/* Animated AI Panel */}
-            <AnimatePresence>
-                {aiPanelOpen && (
-                    <motion.div
-                        initial={{ x: "100%", opacity: 0 }}
-                        animate={{ x: 0, opacity: 1 }}
-                        exit={{ x: "100%", opacity: 0 }}
-                        transition={{ type: "spring", stiffness: 200, damping: 30 }}
-                        className="fixed top-0 right-0 w-[30rem] h-full bg-zinc-950 text-white shadow-lg border-l border-zinc-800 z-50 overflow-y-auto p-6"
-                    >
-                        <div className="flex justify-between items-center mb-4">
-                            <h2 className="text-xl font-bold">AI Job Analysis</h2>
-                            <button onClick={() => setAiPanelOpen(false)} className="text-sm text-gray-400 hover:text-white">
-                                Close
-                            </button>
-                        </div>
-                        {fetchingAI ? (
-                            <div className="text-center text-purple-300 animate-pulse">Analyzing...</div>
-                        ) : (
-                            <div className="whitespace-pre-wrap text-gray-300">{aiResponse}</div>
-                        )}
-                    </motion.div>
-                )}
-            </AnimatePresence>
         </div>
     );
 }

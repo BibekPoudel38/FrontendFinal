@@ -7,7 +7,11 @@ import Home from "./pages/Home";
 import JobDetails from "./pages/JobDetails";
 import JobsPage from "./pages/Jobs";
 import Login from "./pages/Login";
+import MentorProfile from "./pages/MentorProfile";
+import MentorPage from "./pages/Mentors";
 import ProfilePage from "./pages/Profile";
+import RegisterMentor from "./pages/RegisterMentor";
+import Signup from "./pages/Signup";
 import ThreadDetails from "./pages/ThreadDetail";
 
 function AppWrapper() {
@@ -20,13 +24,16 @@ function AppWrapper() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<div>Signup Page</div>} /> {/* Replace later */}
+        <Route path="/signup" element={<Signup />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/thread/:id" element={<ThreadDetails />} />
         <Route path="/jobs" element={<JobsPage />} />
         <Route path="/jobs/:jobId" element={<JobDetails />} />
+        <Route path="/mentors" element={<MentorPage />} />
+        <Route path="/mentors/:mentorId" element={<MentorProfile />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/register-mentor" element={<RegisterMentor />} />
         {/* Add more routes here */}
       </Routes>
     </div>

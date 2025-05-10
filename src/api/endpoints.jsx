@@ -1,1 +1,1 @@
-export var ai_endpoint = "https://86ee-34-45-119-10.ngrok-free.app"
+export var ai_endpoint = "https://e8e4-34-73-143-35.ngrok-free.app/"

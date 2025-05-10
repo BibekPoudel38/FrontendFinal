@@ -10,6 +10,8 @@ import ThreadPreviewer from "../components/ThreadPreviewer";
 import UpVoteDownVoteReplies from "../components/UpVoteDownVoteReplies";
 import { useAuth } from "../context/AuthContext";
 
+import { ai_endpoint } from "../api/endpoints"; // Adjust the import path as necessary
+
 export default function ThreadDetails() {
     const { id } = useParams();
     const navigate = useNavigate();
@@ -81,9 +83,8 @@ export default function ThreadDetails() {
 
         try {
             const text = document.querySelector(".tiptap.ProseMirror")?.innerText;
-            const response = await axios.post('https://ea22-34-124-233-178.ngrok-free.app/ask', {
-                question: `Write a summary of the text in point format ${text}`,
-                "role": "",
+            const response = await axios.post(`${ai_endpoint}summarize`, {
+                text: text,
             });
 
             setAiResponse(response.data.answer);

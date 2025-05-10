@@ -13,7 +13,7 @@ export default function FeedItem({ thread }) {
                         {/* User Info */}
                         <div className="mb-2 text-sm text-gray-400">
                             <div className="flex flex-wrap items-center gap-2">
-                                <span className="font-medium text-white">@{thread.user.username}</span>
+                                <span className="font-medium text-white">@{thread.user.email.split("@")[0]}</span>
                                 <span className="text-gray-500">•</span>
                                 <span>{new Date(thread.created_at).toLocaleString()}</span>
                                 <span className="text-gray-500">•</span>

@@ -71,7 +71,7 @@ export default function CommentComponent({ comment, fetchComments }) {
         <div className="mb-6 ml-2 border-l-2 border-zinc-700 pl-4">
             {/* User Info */}
             <div className="flex items-center space-x-2 mb-2">
-                <span className="font-semibold text-white">@{comment.user.username}</span>
+                <span className="font-semibold text-white">{comment.user.email.split("@")[0]}</span>
                 <span className="text-gray-400 text-xs">• 2 hours ago</span>
             </div>
 
